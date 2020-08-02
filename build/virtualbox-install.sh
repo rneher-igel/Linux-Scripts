@@ -18,7 +18,7 @@ VBVERSION=6.1.12
 sudo apt update -y
 sudo apt install virtualbox-$VBVERSION -y
 
-wget https://download.virtualbox.org/virtualbox/6.1.12/Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
+wget https://download.virtualbox.org/virtualbox/$VBVERSION/Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
 wget https://download.virtualbox.org/virtualbox/$VBVERSION/Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
 
-sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
+sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
