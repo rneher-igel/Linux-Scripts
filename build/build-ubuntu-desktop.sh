@@ -65,6 +65,15 @@ echo "******* Ending -- apt install chrony"
 #
 echo "******* Starting -- apt install openssh-server"
 sudo apt install openssh-server -y
+
+#
+# Allow X11 forwarding
+#
+SSHCONFIG=/etc/ssh/ssh_config
+
+sudo sed -i "s/#   ForwardX11 no/    ForwardX11 yes/" $SSHCONFIG
+sudo sed -i "s/#   ForwardX11Trusted yes /    ForwardX11Trusted yes/" $SSHCONFIG
+
 sudo systemctl start sshd.service
 sudo systemctl enable sshd.service
 echo "******* Ending -- apt install openssh-server"
