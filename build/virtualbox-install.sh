@@ -14,11 +14,11 @@ sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtual
 # Determine VirtualBox version to install
 #   set variable VBVERSION to match
 #
-VBVERSION=6.1.12
+VBVERSIONB=6.1
+VBVERSIONF=6.1.12
 sudo apt update -y
-sudo apt install virtualbox-$VBVERSION -y
+sudo apt install virtualbox-$VBVERSIONB -y
 
-wget https://download.virtualbox.org/virtualbox/$VBVERSION/Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
-wget https://download.virtualbox.org/virtualbox/$VBVERSION/Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
+wget https://download.virtualbox.org/virtualbox/$VBVERSIONF/Oracle_VM_VirtualBox_Extension_Pack-$VBVERSIONF.vbox-extpack
 
-sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-$VBVERSION.vbox-extpack
+sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-$VBVERSIONF.vbox-extpack
