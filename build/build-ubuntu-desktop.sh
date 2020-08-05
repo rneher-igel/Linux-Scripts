@@ -72,7 +72,7 @@ sudo apt install openssh-server -y
 SSHCONFIG=/etc/ssh/ssh_config
 
 sudo sed -i "s/#   ForwardX11 no/    ForwardX11 yes/" $SSHCONFIG
-sudo sed -i "s/#   ForwardX11Trusted yes /    ForwardX11Trusted yes/" $SSHCONFIG
+sudo sed -i "s/#   ForwardX11Trusted yes/    ForwardX11Trusted yes/" $SSHCONFIG
 
 sudo systemctl start sshd.service
 sudo systemctl enable sshd.service
