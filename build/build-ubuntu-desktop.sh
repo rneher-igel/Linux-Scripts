@@ -29,8 +29,10 @@
 # Ubuntu 18.04 / 20.04 Desktop with:
 #
 # Lastest update / upgrade
+echo "******* Starting -- apt-get update; apt-get upgrade"
 sudo apt-get update -y
 sudo apt-get upgrade -y
+echo "******* Ending -- apt-get update; apt-get upgrade"
 
 #
 # Basic utils
@@ -38,12 +40,16 @@ sudo apt-get upgrade -y
 # Required if you are planning to install VirtualBox
 # Ref: https://www.virtualbox.org
 #
+echo "******* Starting -- apt-get install build-essential gcc make perl dkms"
 sudo apt-get install build-essential gcc make perl dkms -y
+echo "******* Ending -- apt-get install build-essential gcc make perl dkms"
 
 #
 # Time Service
 #
+echo "******* Starting -- apt install chrony"
 sudo apt install chrony -y
+echo "******* Ending -- apt install chrony"
 
 #
 # OpenSSH
@@ -57,9 +63,11 @@ sudo apt install chrony -y
 #       VNC connection -- via localhost:5900
 # Ref: https://tinyurl.com/ssh-setup
 #
+echo "******* Starting -- apt install openssh-server"
 sudo apt install openssh-server -y
 sudo systemctl start sshd.service
 sudo systemctl enable sshd.service
+echo "******* Ending -- apt install openssh-server"
 
 #
 # Vino for VNC screen sharing (Headless server)
@@ -67,6 +75,7 @@ sudo systemctl enable sshd.service
 #
 # Change PASSWORD to your happy place! ;-)
 #
+echo "******* Starting -- VNC Vino"
 PASSWORD="My!Pa5s$"
 PASSWORD64=`echo -n '$PASSWORD' | base64`
 sudo apt install vino -y
@@ -75,6 +84,7 @@ gsettings set org.gnome.Vino require-encryption false
 gsettings set org.gnome.Vino authentication-methods "['vnc']"
 gsettings set org.gnome.Vino vnc-password '$PASSWORD64'
 gsettings set org.gnome.Vino prompt-enabled false
+echo "******* Ending -- VNC Vino"
 
 #
 # Setup Headless with dummy video driver
@@ -87,28 +97,34 @@ TMPDIRX11CONF=$TMPDIR/x11-xorg.conf.d
 mkdir -p $TMPDIR/x11-xorg.conf.d
 cp $XORGCONFDIR/*.conf $TMPDIRX11CONF
 
+echo "******* Starting -- dummy video driver"
 sudo apt-get install xserver-xorg-core -y
 sudo apt-get install xorg-video-abi-23 -y
 sudo apt-get install xserver-xorg-video-dummy -y
+echo "******* Ending -- dummy video driver"
 
-sudo cp $TMPDIRX11CONFR/*.conf $XORGCONFDIR
+sudo cp $TMPDIRX11CONF/*.conf $XORGCONFDIR
 
 GRUBFILE=/etc/default/grub
 
 sudo sed -i "s/splash\"/splash nomodeset\"/" $GRUBFILE
 
+echo "******* Starting -- update-grub"
 sudo update-grub
+echo "******* Ending -- update-grub"
 
 #
 # Create /usr/share/X11/xorg.conf.d/xorg.conf
 #
+echo "******* Starting -- xorg.conf setup"
+XORGFILE=xorg.conf
 DUMMYVIDCONF=/usr/share/X11/xorg.conf.d/xorg.conf
 
 if [ -f "$DUMMYVIDCONF" ]; then
   sudo mv $DUMMYVIDCONF $DUMMYVIDCONF.orig
 fi
 
-sudo cat << EOF >> $DUMMYVIDCONF
+cat << EOF >> $TMPDIR/$XORGFILE
 Section "Device"
     Identifier  "Configured Video Device"
     Driver      "dummy"
@@ -132,14 +148,19 @@ Section "Screen"
 EndSection
 EOF
 
+sudo cp $TMPDIR/$XORGFILE $DUMMYVIDCONF
+echo "******* Ending -- xorg.conf setup"
+
 #
 # Make the VNC user auto-logon
 #
+echo "******* Starting -- VNC user auto-logon"
 VNCUSER=igel
 GDM3FILE=/etc/gdm3/custom.conf
 
 sudo sed -i "s/#  AutomaticLoginEnable/AutomaticLoginEnable/" $GDM3FILE
 sudo sed -i "s/#  AutomaticLogin = user1/AutomaticLogin = $VNCUSER/" $GDM3FILE
+echo "******* Ending -- VNC user auto-logon"
 
 #
 # Ready to reboot
