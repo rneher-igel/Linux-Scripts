@@ -27,8 +27,9 @@ Ref: https://tinyurl.com/ssh-setup
 | Name | Description |
 |------|-------------|
 |[config](ssh/config)|Sample configuration file for SSH.|
-|[ssh-home.sh](ssh/ssh.home.sh)|SSH to an alias (home) in config|
-|[ssh-away.sh](ssh/ssh.away.sh)|SSH to an alias (away) in config|
+|[ssh-home.sh](ssh/ssh-home.sh)|SSH to an alias (home) in config|
+|[ssh-away.sh](ssh/ssh-away.sh)|SSH to an alias (away) in config|
+|[ssh-knock.sh](ssh/ssh-knock.sh)|Script to knock on server to allow SSH connection and then to knock on server to close down SSH |
 |[vnc-home.sh](ssh/vnc-home.sh)|VNC tunnel connection on home network|
 |[vnc-away.sh](ssh/vnc-away.sh)|VNC tunnel connection on internet network|
 |[rsync-vb.sh](ssh/rsync-vb.sh)|RSYNC via SSH connection|
