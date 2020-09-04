@@ -38,6 +38,7 @@ Ref: https://tinyurl.com/ssh-setup
 
 | Element<br/>Version | Date | Change Owner | Description |
 | ---- | ---- | ---- | ---- |
+| 0.3 | 03-September-2020 | Ron Neher | Setup a hardened ICG server |
 | 0.2 | 06-August-2020 | Ron Neher | Minor updates based on feedback |
 | 0.1 | 02-August-2020 | Ron Neher | Ubuntu headless |
 
