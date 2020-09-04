@@ -26,6 +26,16 @@
 #
 # Vars used in script -- MUST EDIT to Match
 #
+# Determine the time zone ICG server lives in -- timedatectl list-timezones
+#TIMEZONE="Europe/Vilnius"
+#TIMEZONE="Europe/Berlin"
+#TIMEZONE="Europe/Paris"
+#TIMEZONE="Europe/London"
+#TIMEZONE="America/New_York"
+TIMEZONE="America/Chicago"
+#TIMEZONE="America/Denver"
+#TIMEZONE="America/Los_Angeles"
+
 IGEL_MASTER=192.168.1.197
 IGEL_MASTER_USER=igelums
 IGEL_ICG_INSTALL=192.168.1.14
@@ -47,6 +57,7 @@ echo "******* Ending -- apt-get update / upgrade / dist-upgrade / autoremove"
 # Time Service
 #
 echo "******* Starting -- apt install chrony"
+sudo timedatectl set-timezone $TIMEZONE
 sudo apt install chrony -y
 echo "******* Ending -- apt install chrony"
 
