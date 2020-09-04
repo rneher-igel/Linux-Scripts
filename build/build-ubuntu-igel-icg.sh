@@ -20,7 +20,7 @@
 #  - UFW Firewall
 #  - Fail2ban Automatic Banning
 #  - Rootkit Hunter (Rkhunter)
-#  - Port Knocking (Knockd) -- Note: install knock clinent on PC
+#  - Port Knocking (Knockd) -- Note: install knock client on PC
 #
 
 #
