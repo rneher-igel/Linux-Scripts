@@ -123,7 +123,7 @@ sudo chmod 644 $JAIL_LOCAL
 sudo systemctl status fail2ban
 sudo systemctl restart fail2ban
 sudo fail2ban-client status sshd
-sudo fail2ban-client set sshd unbanip $IGEL_ICG_INSTALL
+#sudo fail2ban-client set sshd unbanip $IGEL_ICG_INSTALL
 echo "******* Ending -- Faile2ban Automatic Banning"
 
 #
@@ -132,8 +132,8 @@ echo "******* Ending -- Faile2ban Automatic Banning"
 echo "******* Starting -- Rootkit Hunter (Rkhunter) Setup"
 sudo apt-get install rkhunter -y
 sudo rkhunter -c
-sudo useradd empty2
-sudo rkhunter -c --enable local_host
+#sudo useradd empty2
+#sudo rkhunter -c --enable local_host
 echo "******* Ending -- Rootkit Hunter (Rkhunter) Setup"
 
 #
