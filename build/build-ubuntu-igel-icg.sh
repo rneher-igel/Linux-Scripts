@@ -21,6 +21,7 @@
 #  - Fail2ban Automatic Banning
 #  - Rootkit Hunter (Rkhunter)
 #  - Port Knocking (Knockd) -- Note: install knock client on PC
+#  - ClamAV -- open source anti-virus engine
 #
 
 #
@@ -173,6 +174,14 @@ sudo sed -i "\$ a KNOCKD_OPTS=\"-i $NETWORKID\"" $KNOCKD
 
 sudo systemctl restart knockd
 echo "******* Ending -- Port Knocking (Knockd)"
+
+#
+# ClamAV - anti-virus engine
+# https://www.clamav.net/
+#
+echo "******* Starting -- ClamAV anti-virus"
+sudo apt-get install clamav clamav-daemon -y
+echo "******* Ending -- ClamAV anti-virus"
 
 #
 # Ready to reboot
